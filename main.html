@@ -9,9 +9,37 @@
 <body>	
 	<script>
 		function secondHighest(arr) {
-			//Write your code here
-			
-		}
+  if (arr.length < 2) {
+    return -Infinity;
+  }
+
+  // Convert string input to numbers
+  arr = arr.map(Number);
+
+  // Use a Set to get unique values
+  let uniqueArr = [...new Set(arr)];
+
+  if (uniqueArr.length < 2) {
+    return -Infinity;
+  }
+
+  // Find the highest and second highest
+  let highest = -Infinity;
+  let secondHighest = -Infinity;
+
+  for (let num of uniqueArr) {
+    if (num > highest) {
+      secondHighest = highest;
+      highest = num;
+    } else if (num > secondHighest) {
+      secondHighest = num;
+    }
+	  
+  }
+
+  return secondHighest;
+}
+
 
 		function Main() {
 			var n = prompt("Enter the number of elements");
